@@ -61,7 +61,7 @@ namespace WebApplication1.Controllers
             student.IdEnrollment = idEnroll;
             student.Salt = "VDIPYS6X9MSB8EPMNZTB";
 
-            db.Student.Add(student);
+            
             db.SaveChanges();
             return Ok("Pomyślnie dodano studenta");
         }
@@ -110,8 +110,11 @@ namespace WebApplication1.Controllers
                 if (student.IdEnrollment.Equals(idEnrollOld))
                 {
                     student.IdEnrollment = idEnrollNew;
+                    db.Student.Update(student);
+                   
                 }
             }
+            db.SaveChanges();
 
             return Ok("Promocja zakończona sukcesem");
         }
